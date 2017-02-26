@@ -1,7 +1,5 @@
-## Put comments here that give an overall description of what your
-## functions do
-
-## Write a short comment describing this function
+## Hello Peer, this set of functions calculates the inverse of a matrix
+## and caches it in the parent enviroment to reduce calculation time
 
 makeCacheMatrix <- function(x = matrix()) {
   inv <- NULL
@@ -10,7 +8,7 @@ makeCacheMatrix <- function(x = matrix()) {
     inv <<- NULL
   }
   get <- function() x
-  setsolve <- function(solve) inv <<- solve
+  setsolve <- function(solve) inv <<- solve #set the inverse of the matrix
   getsolve <- function() inv
   list(set = set, get = get,
        setsolve = setsolve,
@@ -22,7 +20,7 @@ makeCacheMatrix <- function(x = matrix()) {
 
 cacheSolve <- function(x, ...) {
         ## Return a matrix that is the inverse of 'x'
-  inv <- x$getsolve()
+  inv <- x$getsolve() # If this already exists, no need to calculate.
   if(!is.null(inv)) {
     message("getting cached data")
     return(inv)
